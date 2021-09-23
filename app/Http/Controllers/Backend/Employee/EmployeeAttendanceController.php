@@ -11,7 +11,7 @@ use App\Models\User;
 class EmployeeAttendanceController extends Controller
 {
     public function AttendanceView(){
-        $data['allData'] = EmployeeAttendance::select('date')->groupby('date')->orderBy('id', 'desc')->get();
+        $data['allData'] = EmployeeAttendance::select('date')->groupby('date')->orderBy('date', 'desc')->get();
         return view('backend.employee.employee_attendance.employee_attendance_view', $data); 
     }
 

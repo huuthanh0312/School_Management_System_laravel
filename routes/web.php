@@ -31,8 +31,8 @@ use App\Http\Controllers\Backend\Account\AccountSalaryController;
 use App\Http\Controllers\Backend\Account\OtherCostController;
 use App\Http\Controllers\Backend\Report\ProfiteController;
 use App\Http\Controllers\Backend\Report\MarkSheetController;
-
-
+use App\Http\Controllers\Backend\Report\AttendanceReportController;
+use App\Http\Controllers\Backend\Report\ResultReportController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -45,8 +45,12 @@ use App\Http\Controllers\Backend\Report\MarkSheetController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+
+Route::group(['middleware' => 'prevent-back-history'],function(){
+  
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('admin.index');
@@ -414,8 +418,30 @@ Route::get('/marksheet/generate/view', [MarkSheetController ::class, 'MarkSheetV
 
 Route::get('/marksheet/generate/get', [MarkSheetController ::class, 'MarkSheetGet'])->name('report.marksheet.get');
 
+// Attendance Report Routes
+
+Route::get('/attend/view', [AttendanceReportController ::class, 'AttendReportView'])->name('attend.report.view');
+
+Route::get('/attend/get', [AttendanceReportController ::class, 'AttendReportGet'])->name('attend.report.get');
+
+// Student Report Routes
+
+Route::get('/student/result/view', [ResultReportController ::class, 'StudentReportView'])->name('student.result.view');
+
+Route::get('/student/result/get', [ResultReportController ::class, 'StudentReportGet'])->name('student.result.get');
+
+// Student ID Card Routes
+
+Route::get('/student/idcard/view', [ResultReportController ::class, 'StudentIDCardView'])->name('student.idcard.view');
+
+Route::get('/student/idcard/get', [ResultReportController ::class, 'StudentIDCardGet'])->name('student.idcard.get');
+
+
 
 });
     
 
 }); //End  Middleware Auth
+
+
+}); // End Routes Back Historys
