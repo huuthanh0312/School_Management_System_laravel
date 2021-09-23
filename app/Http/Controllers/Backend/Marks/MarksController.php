@@ -60,12 +60,19 @@ class MarksController extends Controller
                 $data->marks = $request->marks[$i];
                 $data->save();
             }
+            $notification=array(
+                'message'=>'Student Marks Inserted Successfully',
+                'alert-type'=>'success'
+            );
+            return Redirect()->back()->with($notification);
+        }else{
+            
+            $notification=array(
+                'message'=>'Sorry Data Not Saved',
+                'alert-type'=>'error'
+            );
+            return Redirect()->back()->with($notification);
         }
-        $notification=array(
-            'message'=>'Student Marks Inserted Successfully',
-            'alert-type'=>'success'
-        );
-        return Redirect()->back()->with($notification);
     }
 
     public function MarksEntryEdit(){
@@ -91,11 +98,19 @@ class MarksController extends Controller
                 $data->marks = $request->marks[$i];
                 $data->save();
             }
+            $notification=array(
+                'message'=>'Student Marks Updated Successfully',
+                'alert-type'=>'success'
+            );
+            return Redirect()->back()->with($notification);
+        } else{
+            
+            $notification=array(
+                'message'=>'Sorry Data Not Saved',
+                'alert-type'=>'error'
+            );
+            return Redirect()->back()->with($notification);
         }
-        $notification=array(
-            'message'=>'Student Marks Updated Successfully',
-            'alert-type'=>'success'
-        );
-        return Redirect()->back()->with($notification);
+        
     }
 }

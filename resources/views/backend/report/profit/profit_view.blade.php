@@ -12,20 +12,29 @@
                 <div class="col-md-12">
                     <div class="box bb-3 border-warning">
                         <div class="box-header">
-                            <h4 class="box-title">Employee<strong> Monthly Salary</strong></h4>
+                            <h4 class="box-title">Manage<strong> Monthly- Yearly Profite</strong></h4>
                         </div>
                         <div class="box-body">
-                            <div class="row text-center">
-                                <div class="col-md-8 mt-2">
-                                    <div class="form-group row">
-                                        <h5 class="mt-2 col-sm-4">Attendance Date: <span class="text-danger">*</span></h5>
-                                        <div class="controls col-sm-8">
-                                            <input type="date" name="date" id="date" class="form-control">
+                            <div class="row">
+                                <div class="col-md-5 mt-2">
+                                    <div class="form-group">
+                                        <h5 class="mt-2">Start Date: <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="date" name="start_date" id="start_date" class="form-control">
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-2 mt-2">
-                                    <a id="search" class="btn btn-primary btn-rounded ">Search</a>
+                                <div class="col-md-5 mt-2">
+                                    <div class="form-group">
+                                        <h5 class="mt-2">End Date: <span class="text-danger">*</span></h5>
+                                        <div class="controls">
+                                            <input type="date" name="end_date" id="end_date" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 mt-4">
+                                    <br>
+                                    <a name="search" id="search" class="btn btn-primary btn-rounded">Search</a>
                                 </div>
                             </div> <!-- /.row -->
                             <div class="row ">
@@ -37,11 +46,9 @@
                                                     <tr> @{{{thsource}}}</tr>
                                                 </thead>
                                                 <tbody>
-                                                    @{{#each this}}
                                                     <tr>
                                                         @{{{tdsource}}}
                                                     </tr>
-                                                    @{{/each}}
                                                 </tbody>
                                             </table>
                                         </script>
@@ -64,13 +71,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js" ></script>
 <script type="text/javascript">
 $(document).on('click', '#search', function() {
-    var date = $('#date').val();
-
+    var start_date = $('#start_date').val();
+    var end_date = $('#end_date').val();
     $.ajax({
-        url: "{{route('employee.monthly.salary.get')}}",
+        url: "{{route('report.profit.datewise.get')}}",
         type: 'GET',
         data: {
-            'date': date,
+            'start_date': start_date,
+            'end_date' : end_date,
         },
         beforeSend: function(){},
         success: function(data) {

@@ -132,6 +132,27 @@ $route = Route::current()->getName();
                 </a>
                 <ul class="treeview-menu">
                     <li class="{{$route == 'student.fee.view' ? 'active' : ''}}"><a href="{{route('student.fee.view')}}"><i class="ti-more"></i>Student Fee</a></li>
+                    <li class="{{$route == 'account.employee.salary.view' ? 'active' : ''}}"><a href="{{route('account.employee.salary.view')}}"><i class="ti-more"></i>Employee Salary</a></li>
+                    <li class="{{$route == 'account.other.cost.view' ? 'active' : ''}}"><a href="{{route('account.other.cost.view')}}"><i class="ti-more"></i>Other Cost</a></li>
+                </ul>
+            </li>
+            <li class="header nav-small-cap">Report Interface</li>
+		  
+            <li class="treeview {{ $prefix == '/reports' ? 'active': ''}}">
+                <a href="#">
+                    <i data-feather="hard-drive"></i>
+                    <span>Report Management</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-right pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{{$route == 'monthly.profit.view' ? 'active' : ''}}">
+                        <a href="{{route('monthly.profit.view')}}"><i class="ti-more"></i>Monthly-Yearly Profite</a>
+                    </li>
+                    <li class="{{$route == 'marksheet.generate.view' ? 'active' : ''}}"><a href="{{route('marksheet.generate.view')}}">
+                        <i class="ti-more"></i>MarkSheet Generate</a>
+                    </li>
                    
                 </ul>
             </li>
@@ -143,7 +164,7 @@ $route = Route::current()->getName();
         <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Settings"
             aria-describedby="tooltip92529"><i class="ti-settings"></i></a>
         <!-- item-->
-        <a href="mailbox_inbox.html" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i
+        <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Email"><i
                 class="ti-email"></i></a>
         <!-- item-->
         <a href="javascript:void(0)" class="link" data-toggle="tooltip" title="" data-original-title="Logout"><i

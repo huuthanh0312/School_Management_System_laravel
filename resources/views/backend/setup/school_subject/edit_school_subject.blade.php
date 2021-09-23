@@ -33,7 +33,7 @@
                                 <hr>
                                 <div class="pr-10 float-right">
                                     <button type="submit" class="btn btn-success btn-rounded ">Submit</button>
-                                    <a href="{{route('student.group.view')}}" class="btn btn-danger btn-rounded">Return</a>
+                                    <a href="{{route('school.subject.view')}}" class="btn btn-danger btn-rounded">Return</a>
                                 </div>
                             </form>
                         </div>

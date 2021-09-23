@@ -27,6 +27,11 @@ use App\Http\Controllers\Backend\Employee\MonthlySalaryController;
 use App\Http\Controllers\Backend\Marks\MarksController;
 use App\Http\Controllers\Backend\Marks\GradeController;
 use App\Http\Controllers\Backend\Account\StudentFeeController;
+use App\Http\Controllers\Backend\Account\AccountSalaryController;
+use App\Http\Controllers\Backend\Account\OtherCostController;
+use App\Http\Controllers\Backend\Report\ProfiteController;
+use App\Http\Controllers\Backend\Report\MarkSheetController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -355,9 +360,10 @@ Route::post('/grade/update/{id}', [GradeController::class, 'GradeUpdate'])->name
 
 });
 
+
 Route::prefix('account')->group(function(){
 
-//Mark Entry Routes
+// Account Student Fee Routes
 
 Route::get('/student/fee/view', [StudentFeeController::class, 'StudentFeeView'])->name('student.fee.view');
 
@@ -367,8 +373,49 @@ Route::get('/student/fee/getstudent', [StudentFeeController::class, 'StudentFeeG
 
 Route::post('/student/fee/store', [StudentFeeController::class, 'StudentFeeStore'])->name('account.fee.store');
 
+
+// Account Student Fee Routes
+
+Route::get('/employee/salary/view', [AccountSalaryController::class, 'EmployeeSalaryView'])->name('account.employee.salary.view');
+
+Route::get('/employee/salary/add', [AccountSalaryController::class, 'EmployeeSalaryAdd'])->name('account.employee.salary.add');
+
+Route::get('/employee/salary/getemployee', [AccountSalaryController::class, 'EmployeeSalaryGetEmployee'])->name('account.salary.getemployee');
+
+Route::post('/employee/salary/store', [AccountSalaryController::class, 'EmployeeSalaryStore'])->name('account.salary.store');
+
+// Account Student Fee Routes
+
+Route::get('/other/cost/view', [OtherCostController::class, 'OtherCostView'])->name('account.other.cost.view');
+
+Route::post('/other/cost/store', [OtherCostController::class, 'OtherCostStore'])->name('account.other.cost.store');
+
+Route::get('/other/cost/edit/{id}', [OtherCostController::class, 'OtherCostEdit'])->name('account.other.cost.edit');
+
+Route::post('/other/cost/update/{id}', [OtherCostController::class, 'OtherCostUpdate'])->name('account.other.cost.update');
+
 });
 
+
+
+Route::prefix('reports')->group(function(){
+
+// Monthly - Yearly Profite Routes
+
+Route::get('/monthly/profit/view', [ProfiteController ::class, 'MonthlyProfitView'])->name('monthly.profit.view');
+
+Route::get('/profit/datewise/get', [ProfiteController ::class, 'MonthlyProfitDateWise'])->name('report.profit.datewise.get');
+
+Route::get('/profit/pdf', [ProfiteController ::class, 'MonthlyProfitPDF'])->name('report.profit.pdf');
+
+// Monthly - Yearly Profite Routes
+
+Route::get('/marksheet/generate/view', [MarkSheetController ::class, 'MarkSheetView'])->name('marksheet.generate.view');
+
+Route::get('/marksheet/generate/get', [MarkSheetController ::class, 'MarkSheetGet'])->name('report.marksheet.get');
+
+
+});
     
 
 }); //End  Middleware Auth
